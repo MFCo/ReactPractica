@@ -1,0 +1,6 @@
+-API REST (https://codeplanet.io/principles-good-restful-api-design/)
+-introduccion a backend
+-instalar y correr Mongo
+-Mongoose, esquema lista de tareas
+-Express, Post y Get al esquema de tareas (Postman para comprobar y romper)
+-Robustez a lo anterior

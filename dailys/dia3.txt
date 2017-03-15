@@ -1,0 +1,7 @@
+-Finalizar backend (PUT)
+-Mostrar objetos hardcodeados en tabla React
+-Mostrar JSON en tabla React
+-XMLHTTPRequest, leer documentacion
+-Conectar backend con frontend
+-Introduccion async
+-Comenzar a investigar React Router

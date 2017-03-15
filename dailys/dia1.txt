@@ -1,0 +1,4 @@
+-instalar Node
+-instalar create-react-app
+-crear primer programa, TaTeTi (https://facebook.github.io/react/tutorial/tutorial.html)
+-agregar optimizaciones sugeridas al programa
