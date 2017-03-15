@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-class App extends Component {
+class TableRow extends React.Component {  
   render() {
+    const {data} = this.props;
+
+    const row = data.map((data) =>
+    <tr key={data._id}>
+      <td>{data.name}</td>
+      <td>{data.user}</td>
+      <td>{data.status}</td>
+      <td>{data.start}</td>
+    </tr>
+    );
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <span>{row}</span>
     );
   }
 }
 
-export default App;
+class Table extends React.Component {  
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <table>
+        <TableRow data={this.props.data} />
+      </table>
+    );
+  }
+}
+
+export default Table;

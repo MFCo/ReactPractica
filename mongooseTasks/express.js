@@ -33,7 +33,7 @@ var Task = mongoose.model('Task', taskSchema);
 app.post('/tasks', function(req, res){
     var t = new Task({
       name: req.body.name,
-      user: req.body.name,
+      user: req.body.user,
       status: req.body.status,
       start: req.body.start
   });
@@ -75,6 +75,6 @@ app.get('/tasks', function (req, res) {
 })
 
 //Listening
-app.listen(3000, function () {
-  console.log('listening on port 3000!')
+app.listen(5000, function () {
+  console.log('listening on port 5000!')
 })
