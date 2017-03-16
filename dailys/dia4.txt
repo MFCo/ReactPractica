@@ -2,3 +2,5 @@
 -Agregar una pagina con routing al frontend
 -Realizar la carga de los datos cuando se renderiza el componente (estados)
 -Poder cargar desde frontend los datos
+-Hijos en routing
+-Agregar contador de cantidad de tareas, evaluar actualizaciones cuando un cambio altera dos componentes

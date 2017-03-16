@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Count from './count';
 
 class TableRow extends React.Component {  
   render() {
@@ -20,7 +21,6 @@ class TableRow extends React.Component {
 
 class Table extends React.Component {  
   constructor(props) {
-    console.log("asdasd");
     super(props);
     this.state = {
       data:["LOADING"],
@@ -29,8 +29,6 @@ class Table extends React.Component {
 
   componentDidMount(){
     var xmlhttp = new XMLHttpRequest();
-    console.log("qwe");
-
     xmlhttp.open("GET",'http://localhost:5000/tasks',  true);
 
     xmlhttp.onload = () => {
@@ -44,6 +42,8 @@ class Table extends React.Component {
     return (
       <table>
         <TableRow data={this.state.data} />
+        {this.props.children}
+        <Count />
       </table>
     );
   }
