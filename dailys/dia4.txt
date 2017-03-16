@@ -1,0 +1,3 @@
+-Afirmar conceptos Routing, comprender ejemplo, y que significa cada parte
+-Agregar una pagina con routing al frontend
+-Realizar la carga de los datos cuando se renderiza el componente (estados)

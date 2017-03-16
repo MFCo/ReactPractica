@@ -20,12 +20,30 @@ class TableRow extends React.Component {
 
 class Table extends React.Component {  
   constructor(props) {
+    console.log("asdasd");
     super(props);
+    this.state = {
+      data:["LOADING"],
+    };
   }
+
+  componentDidMount(){
+    var xmlhttp = new XMLHttpRequest();
+    console.log("qwe");
+
+    xmlhttp.open("GET",'http://localhost:5000/tasks',  true);
+
+    xmlhttp.onload = () => {
+          var obj = JSON.parse(xmlhttp.response);
+          this.setState({data: obj});
+    };
+    xmlhttp.send(null);
+  }
+
   render() {
     return (
       <table>
-        <TableRow data={this.props.data} />
+        <TableRow data={this.state.data} />
       </table>
     );
   }
