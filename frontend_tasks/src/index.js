@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory, Router, Route, IndexRoute, Link, withRouter } from 'react-router'
-import Table from './App';
-
+import Table from './table';
+import NameForm from './form';
 
 const Hola = () => (
   <div>
@@ -10,35 +10,25 @@ const Hola = () => (
   </div>
 )
 
-var req = new XMLHttpRequest();
-req.open("POST",'http://localhost:5000/tasks',  true);
-var n = {name:'lelel', user:'mgmg',status:'todo',start:new Date(2017, 9)};
-req.setRequestHeader("Content-Type", "application/json");
-req.send("asdasd");
-req.onload = function(){
-  console.log(req.status);
-}
-
-req.onerror = function(){
-  console.log("ERROR");
-}
-
-// var xmlhttp = new XMLHttpRequest();
-
-// xmlhttp.open("GET",'http://localhost:5000/tasks',  true);
-
-// xmlhttp.onload = function() {
-//       var obj = JSON.parse(xmlhttp.response);
-//       console.log(obj);
-//       Table.state.data = obj;
-// }
-
-//xmlhttp.send(null);
+const NewTask = () => (
+  <div>
+    <h2>TODO AGREGAR</h2>
+  </div>
+)
 
  ReactDOM.render(
         <Router history={browserHistory}>
-          <Route path="/" component={Table} data={[]}/>
+        <div>
+              <ul>
+                <li><Link to="/">Tasks</Link></li>
+                <li><Link to="/newtask">Cargar nueva</Link></li>
+                <li><Link to="/hola">HOLA</Link></li>
+              </ul>
+          <hr/>
+          <Route exact path="/" component={Table} data={[]}/>
           <Route path="/hola" component={Hola} />
+          <Route path="/newtask" component={NameForm} />
+          </div>
         </Router>,
         document.getElementById("root")
       
