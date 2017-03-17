@@ -1,0 +1,5 @@
+-Comunicacion entre componentes, al agregar una task que se updateen quienes sea necesario
+-Primera aproximacion comunicando al padre el cambio, y un flow manual
+-Aproximacion por Observer-Observable
+-High Order Components
+-Aproximacion con HOC

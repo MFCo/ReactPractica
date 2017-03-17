@@ -18,18 +18,11 @@ const NewTask = () => (
 
  ReactDOM.render(
         <Router history={browserHistory}>
-        <div>
-              <ul>
-                <li><Link to="/">Tasks</Link></li>
-                <li><Link to="/newtask">Cargar nueva</Link></li>
-                <li><Link to="/hola">HOLA</Link></li>
-              </ul>
-          <hr/>
+
           <Route exact path="/" component={Table} data={[]}>
                 <Route path="/hola" component={Hola} />
                 <Route path="/newtask" component={NameForm} />
           </Route>
-          </div>
         </Router>,
         document.getElementById("root")
       

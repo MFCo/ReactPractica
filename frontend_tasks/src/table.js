@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import Count from './count';
+import NameForm from './form';
+import withSubscription from './subscriptor';
+
 
 class TableRow extends React.Component {  
   render() {
     const {data} = this.props;
-
+    {console.log(data)}
     const row = data.map((data) =>
     <tr key={data._id}>
       <td>{data.name}</td>
@@ -12,9 +15,9 @@ class TableRow extends React.Component {
       <td>{data.status}</td>
       <td>{data.start}</td>
     </tr>
-    );
+    )
     return (
-      <span>{row}</span>
+      <h3>{row}</h3>
     );
   }
 }
@@ -22,9 +25,18 @@ class TableRow extends React.Component {
 class Table extends React.Component {  
   constructor(props) {
     super(props);
+    this.newTast = this.newTask.bind(this);
     this.state = {
-      data:["LOADING"],
+      data:[],
     };
+  }
+
+  newTask(t){
+    console.log("ENTRO ACA A NEWTASK");
+    var newData = this.state.data.slice();
+    newData.push(t);
+    console.log(newData);
+    this.setState({data:newData});
   }
 
   componentDidMount(){
@@ -33,20 +45,37 @@ class Table extends React.Component {
 
     xmlhttp.onload = () => {
           var obj = JSON.parse(xmlhttp.response);
+          console.log(obj);
           this.setState({data: obj});
     };
     xmlhttp.send(null);
   }
 
+renderChildren(props) {
+  return React.Children.map(props.children, child => {
+    if (child.type === NameForm)
+      return React.cloneElement(child, {
+        newTask: this.newTask.bind(this)
+      })
+    else
+      return child
+  })
+}
+
   render() {
     return (
       <table>
         <TableRow data={this.state.data} />
-        {this.props.children}
+        {this.renderChildren(this.props)}
         <Count />
       </table>
     );
   }
 }
+
+const TableWithSubscription = withSubscription(
+  Table,
+  (DataSource) => DataSource.getInput()
+);
 
 export default Table;

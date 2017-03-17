@@ -19,12 +19,15 @@ class NameForm extends React.Component {
     req.open("POST",'http://localhost:5000/tasks', true);
     req.setRequestHeader("Content-Type", "application/json");
     req.send(this.state.value);
-    req.onload = function(){
+    req.onload =()=>{
         alert(req.status);
+        if(req.status == 201){
+            console.log("ENTRA AL IF")
+            this.props.newTask(JSON.parse(this.state.value));
+        }
     }
-
     req.onerror = function(){
-    console.log("ERROR");
+        alert("ERROR");
     }
     event.preventDefault();
   }

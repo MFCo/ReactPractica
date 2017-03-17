@@ -4,3 +4,4 @@
 -Poder cargar desde frontend los datos
 -Hijos en routing
 -Agregar contador de cantidad de tareas, evaluar actualizaciones cuando un cambio altera dos componentes
+-Update a otros componentes cuando realizas POST
