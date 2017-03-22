@@ -1,33 +1,37 @@
 import React, { Component } from 'react';
 
+var EventBus = require('eventbusjs');
+
 
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {
+      value: ''
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
   }
 
   handleSubmit(event) {
     var req = new XMLHttpRequest();
-    req.open("POST",'http://localhost:5000/tasks', true);
+    req.open("POST", 'http://localhost:5000/tasks', true);
     req.setRequestHeader("Content-Type", "application/json");
     req.send(this.state.value);
-    req.onload =()=>{
+    req.onload = () => {
+      if (req.status == 201) {
+        //this.props.setTable(JSON.parse(this.state.value));
+        EventBus.dispatch("table updated", JSON.parse(this.state.value));
         alert(req.status);
-        if(req.status == 201){
-            console.log("ENTRA AL IF")
-            this.props.newTask(JSON.parse(this.state.value));
-        }
+      }
     }
-    req.onerror = function(){
-        alert("ERROR");
+    req.onerror = function () {
+      alert("ERROR");
     }
     event.preventDefault();
   }
@@ -44,6 +48,5 @@ class NameForm extends React.Component {
     );
   }
 }
-
 
 export default NameForm;

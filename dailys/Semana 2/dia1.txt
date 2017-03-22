@@ -1,0 +1,2 @@
+-Continuar definiendo HOC para subscriptores entre componentes
+-Ejemplo de como sacar el estado del componente

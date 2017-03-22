@@ -1,32 +1,27 @@
 import React from 'react';
+var EventBus = require('eventbusjs');
 
 
-function withSubscription(WrappedComponent, selectData) {
+
+function withSubscription(WrappedComponent) {
+  var table = [];
   return class extends React.Component {
     constructor(props) {
       super(props);
-      this.handleChange = this.handleChange.bind(this);
-      this.state = {
-        data: selectData(DataSource, props)
-      };
     }
 
     componentDidMount() {
-      DataSource.addChangeListener(this.handleChange);
+      EventBus.addEventListener("table updated", (t) => {
+        var newData = table.slice();
+        newData = newData.concat(t.target);
+        table = newData;
+        this.forceUpdate();
+      })
     }
 
-    componentWillUnmount() {
-      DataSource.removeChangeListener(this.handleChange);
-    }
-
-    handleChange() {
-      this.setState({
-        data: selectData(DataSource, this.props)
-      });
-    }
 
     render() {
-      return <WrappedComponent data={this.state.data} {...this.props} />;
+      return <WrappedComponent data={table} {...this.props} />;
     }
   };
 }

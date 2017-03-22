@@ -2,7 +2,7 @@
 -Mostrar objetos hardcodeados en tabla React
 -Mostrar JSON en tabla React
 -XMLHTTPRequest, leer documentacion
--Conectar backend con frontend
+-Conectar backend con frontend (CORS)
 -Introduccion async
 -Comenzar a investigar React Router
 -Tutorial React Router (https://reacttraining.com/react-router/web/guides/quick-start)

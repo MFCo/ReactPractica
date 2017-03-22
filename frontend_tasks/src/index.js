@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory, Router, Route, IndexRoute, Link, withRouter } from 'react-router'
-import Table from './table';
+import TableWithSubscription from './table';
 import NameForm from './form';
 
 const Hola = () => (
@@ -19,7 +19,7 @@ const NewTask = () => (
  ReactDOM.render(
         <Router history={browserHistory}>
 
-          <Route exact path="/" component={Table} data={[]}>
+          <Route exact path="/" component={TableWithSubscription} data={[]}>
                 <Route path="/hola" component={Hola} />
                 <Route path="/newtask" component={NameForm} />
           </Route>

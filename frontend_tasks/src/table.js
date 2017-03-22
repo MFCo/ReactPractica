@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import Count from './count';
+import CountWithSubscription from './count';
 import NameForm from './form';
 import withSubscription from './subscriptor';
 
+var EventBus = require('eventbusjs');
 
-class TableRow extends React.Component {  
+
+class TableRow extends React.Component {
   render() {
-    const {data} = this.props;
-    {console.log(data)}
+    const { data } = this.props;
     const row = data.map((data) =>
-    <tr key={data._id}>
-      <td>{data.name}</td>
-      <td>{data.user}</td>
-      <td>{data.status}</td>
-      <td>{data.start}</td>
-    </tr>
+      <tr key={data._id}>
+        <td>{data.name}</td>
+        <td>{data.user}</td>
+        <td>{data.status}</td>
+        <td>{data.start}</td>
+      </tr>
     )
     return (
       <h3>{row}</h3>
@@ -22,60 +23,40 @@ class TableRow extends React.Component {
   }
 }
 
-class Table extends React.Component {  
+class Table extends React.Component {
   constructor(props) {
     super(props);
-    this.newTast = this.newTask.bind(this);
-    this.state = {
-      data:[],
-    };
   }
 
-  newTask(t){
-    console.log("ENTRO ACA A NEWTASK");
-    var newData = this.state.data.slice();
-    newData.push(t);
-    console.log(newData);
-    this.setState({data:newData});
-  }
-
-  componentDidMount(){
+  componentDidMount() {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET",'http://localhost:5000/tasks',  true);
+    xmlhttp.open("GET", 'http://localhost:5000/tasks', true);
 
     xmlhttp.onload = () => {
-          var obj = JSON.parse(xmlhttp.response);
-          console.log(obj);
-          this.setState({data: obj});
+      var obj = JSON.parse(xmlhttp.response);
+      //this.props.setTable(obj);
+      EventBus.dispatch("table updated", obj);
     };
     xmlhttp.send(null);
   }
 
-renderChildren(props) {
-  return React.Children.map(props.children, child => {
-    if (child.type === NameForm)
-      return React.cloneElement(child, {
-        newTask: this.newTask.bind(this)
-      })
-    else
-      return child
-  })
-}
+  renderChildren(props) {
+    return React.Children.map(props.children, child => {
+        return child
+    })
+  }
 
   render() {
     return (
       <table>
-        <TableRow data={this.state.data} />
+        <TableRow data={this.props.data} />
         {this.renderChildren(this.props)}
-        <Count />
+        <CountWithSubscription />
       </table>
     );
   }
 }
 
-const TableWithSubscription = withSubscription(
-  Table,
-  (DataSource) => DataSource.getInput()
-);
+const TableWithSubscription = withSubscription(Table);
 
-export default Table;
+export default TableWithSubscription;
