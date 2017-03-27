@@ -1,3 +1,4 @@
 -Finalizar HOC quitando estado
 -Sistema de update para que al insertar nuevo dato se actualicen ambos componentes (EventBus)
 -Concepto de Context en React
+-Redux

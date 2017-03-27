@@ -1,2 +1,2 @@
--Continuar definiendo HOC para subscriptores entre componentes
+-Continuar definiendo HOC para subscriptores entre componentes primera aproximacion utilizando eventos hardcodeados
 -Ejemplo de como sacar el estado del componente

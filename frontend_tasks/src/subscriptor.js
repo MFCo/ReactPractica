@@ -1,5 +1,7 @@
 import React from 'react';
-var EventBus = require('eventbusjs');
+import store from './store';
+
+//var EventBus = require('eventbusjs');
 
 
 
@@ -11,12 +13,12 @@ function withSubscription(WrappedComponent) {
     }
 
     componentDidMount() {
-      EventBus.addEventListener("table updated", (t) => {
-        var newData = table.slice();
-        newData = newData.concat(t.target);
-        table = newData;
-        this.forceUpdate();
-      })
+      store.subscribe(()=>{
+          var newData = store.getState().tasks;
+          table = newData;
+          console.log(table);
+          this.forceUpdate();
+      });
     }
 
 

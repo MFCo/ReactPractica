@@ -1,6 +1,9 @@
+import store from './store';
+import {addTask} from './actions';
+
 import React, { Component } from 'react';
 
-var EventBus = require('eventbusjs');
+//var EventBus = require('eventbusjs');
 
 
 class NameForm extends React.Component {
@@ -25,8 +28,8 @@ class NameForm extends React.Component {
     req.send(this.state.value);
     req.onload = () => {
       if (req.status == 201) {
-        //this.props.setTable(JSON.parse(this.state.value));
-        EventBus.dispatch("table updated", JSON.parse(this.state.value));
+        //EventBus.dispatch("table updated", JSON.parse(this.state.value));
+        store.dispatch(addTask(JSON.parse(this.state.value)));
         alert(req.status);
       }
     }

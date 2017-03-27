@@ -4,23 +4,10 @@ import { browserHistory, Router, Route, IndexRoute, Link, withRouter } from 'rea
 import TableWithSubscription from './table';
 import NameForm from './form';
 
-const Hola = () => (
-  <div>
-    <h2>Hola</h2>
-  </div>
-)
-
-const NewTask = () => (
-  <div>
-    <h2>TODO AGREGAR</h2>
-  </div>
-)
 
  ReactDOM.render(
         <Router history={browserHistory}>
-
           <Route exact path="/" component={TableWithSubscription} data={[]}>
-                <Route path="/hola" component={Hola} />
                 <Route path="/newtask" component={NameForm} />
           </Route>
         </Router>,

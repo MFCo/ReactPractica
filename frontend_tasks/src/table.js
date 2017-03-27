@@ -1,9 +1,11 @@
+import store from './store';
+import {addTask} from './actions';
 import React, { Component } from 'react';
 import CountWithSubscription from './count';
 import NameForm from './form';
 import withSubscription from './subscriptor';
 
-var EventBus = require('eventbusjs');
+//var EventBus = require('eventbusjs');
 
 
 class TableRow extends React.Component {
@@ -35,7 +37,9 @@ class Table extends React.Component {
     xmlhttp.onload = () => {
       var obj = JSON.parse(xmlhttp.response);
       //this.props.setTable(obj);
-      EventBus.dispatch("table updated", obj);
+      //EventBus.dispatch("table updated", obj);
+      console.log("asdad");
+      store.dispatch(addTask(obj));
     };
     xmlhttp.send(null);
   }
