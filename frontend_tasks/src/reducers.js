@@ -3,8 +3,7 @@ import { ADD_TASK } from './actions';
 
 function tasks(state = [], action) {
     switch (action.type) {
-        case ADD_TASK:{
-            console.log("erere");
+        case ADD_TASK: {
             return (state.slice().concat(action.task));
         }
         default:

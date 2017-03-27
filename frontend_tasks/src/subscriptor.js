@@ -1,9 +1,6 @@
 import React from 'react';
 import store from './store';
 
-//var EventBus = require('eventbusjs');
-
-
 
 function withSubscription(WrappedComponent) {
   var table = [];
@@ -13,11 +10,11 @@ function withSubscription(WrappedComponent) {
     }
 
     componentDidMount() {
-      store.subscribe(()=>{
-          var newData = store.getState().tasks;
-          table = newData;
-          console.log(table);
-          this.forceUpdate();
+      store.subscribe(() => {
+        var newData = store.getState().tasks;
+        table = newData;
+        console.log(table);
+        this.forceUpdate();
       });
     }
 

@@ -5,12 +5,12 @@ import TableWithSubscription from './table';
 import NameForm from './form';
 
 
- ReactDOM.render(
-        <Router history={browserHistory}>
-          <Route exact path="/" component={TableWithSubscription} data={[]}>
-                <Route path="/newtask" component={NameForm} />
-          </Route>
-        </Router>,
-        document.getElementById("root")
-      
+ReactDOM.render(
+  <Router history={browserHistory}>
+    <Route exact path="/" component={TableWithSubscription} data={[]}>
+      <Route path="/newtask" component={NameForm} />
+    </Route>
+  </Router>,
+  document.getElementById("root")
+
 );

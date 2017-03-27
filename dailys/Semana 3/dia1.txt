@@ -1,1 +1,2 @@
 -Agregar Redux a aplicación de tasks
+-Generar nuevo HOC que saca el factor comun de lo necesario para acoplar al sistema
