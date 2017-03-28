@@ -23,9 +23,6 @@ function withSubscription(selectData = () => { return [] }, selectActions = () =
       }
     };
   }
-
-
-
 }
 
 export default withSubscription;

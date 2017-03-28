@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser')
 
 //Ready to parse JSON in Post
-app.use( bodyParser.json() );
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+db.once('open', function () {
   // we're connected!
 });
 
@@ -28,40 +28,60 @@ var taskSchema = mongoose.Schema({
 
 var Task = mongoose.model('Task', taskSchema);
 
+var userSchema = mongoose.Schema({
+  user: String,
+  pass: String
+});
+
+var User = mongoose.model('User', userSchema);
+
 
 //Posting tasks
-app.post('/tasks', function(req, res){
-    var t = new Task({
-      name: req.body.name,
-      user: req.body.user,
-      status: req.body.status,
-      start: req.body.start
+app.post('/tasks', function (req, res) {
+  var t = new Task({
+    name: req.body.name,
+    user: req.body.user,
+    status: req.body.status,
+    start: req.body.start
   });
-    t.save(function(err,t) {
-        if (err) return res.status(500).send(err);
-        res.status(201).send(t);
-    });
+  t.save(function (err, t) {
+    if (err) return res.status(500).send(err);
+    res.status(201).send(t);
+  });
 });
+
+//Posting users
+app.post('/users', function (req, res) {
+  var u = new User({
+    user: req.body.user,
+    pass: req.body.pass
+  });
+  u.save(function (err, u) {
+    if (err) return res.status(500).send(err);
+    res.status(201).send(u);
+  });
+});
+
 
 //Modify a task
 
-app.put('/tasks', function (req, res){
-  Task.findById(req.body._id, function(err, p) {
+app.put('/tasks', function (req, res) {
+  Task.findById(req.body._id, function (err, p) {
     console.log(p);
-  if (!p)
-    return res.status(500).send(err);
-  else {
-        p.name = req.body.name;
-        p.user = req.body.user;
-        p.status = req.body.status;
-        p.start = req.body.start;
-        p.save(function(err,p) {
-          if (err)
-            res.status(500).send(err);
-          else
-            res.status(201).send(p);
-        });
-      }
+    if (!p)
+      return res.status(500).send(err);
+    else {
+      p.name = req.body.name;
+      p.user = req.body.user;
+      p.status = req.body.status;
+      p.start = req.body.start;
+      p.save(function (err, p) {
+        if (err)
+          res.status(500).send(err);
+        else
+          res.status(201).send(p);
+      });
+    }
   });
 });
 
@@ -71,6 +91,14 @@ app.get('/tasks', function (req, res) {
   Task.find(function (err, tasks) {
     if (err) return res.status(500).send(err);
     res.send(tasks);
+  })
+})
+
+//Getting all users
+app.get('/users', function (req, res) {
+  User.find(function (err, users) {
+    if (err) return res.status(500).send(err);
+    res.send(users);
   })
 })
 
