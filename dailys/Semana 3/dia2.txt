@@ -2,3 +2,4 @@
 -Leer React-Redux, connect
 -Implementar contexto al decorator como connect (funcion que retorna funcion que pide el WrappedComponent)
 -Agregar soporte usuarios a backend
+-Pagina de loguin y singup como entidad aparte al sistema, conectadas sólo entre ellas

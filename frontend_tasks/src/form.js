@@ -52,6 +52,6 @@ function formActions() {
   return { addTask: addTask };
 }
 
-const NameFormConnected = withSubscription(undefined ,formActions)(NameForm);
+const NameFormConnected = withSubscription(undefined, formActions)(NameForm);
 
 export default NameFormConnected;
