@@ -1,0 +1,2 @@
+-HOC ademas del componente, va por parametro funciones que seleccionen data y acciones para pasar por Props (implementación)
+-Leer React-Redux, connect

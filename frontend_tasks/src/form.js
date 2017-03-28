@@ -1,6 +1,5 @@
-import store from './store';
 import { addTask } from './actions';
-
+import withSubscription from './subscriptor';
 import React, { Component } from 'react';
 
 
@@ -26,7 +25,7 @@ class NameForm extends React.Component {
     req.send(this.state.value);
     req.onload = () => {
       if (req.status == 201) {
-        store.dispatch(addTask(JSON.parse(this.state.value)));
+        this.props.addTask(JSON.parse(this.state.value));
         alert(req.status);
       }
     }
@@ -40,7 +39,7 @@ class NameForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
+          New Task:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
@@ -49,4 +48,10 @@ class NameForm extends React.Component {
   }
 }
 
-export default NameForm;
+function formActions() {
+  return { addTask: addTask };
+}
+
+const NameFormConnected = withSubscription(NameForm, undefined ,formActions)
+
+export default NameFormConnected;

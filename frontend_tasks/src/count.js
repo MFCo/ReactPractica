@@ -7,11 +7,16 @@ class Count extends React.Component {
   }
   render() {
     return (
-      <h2> {this.props.data.length} </h2>
+      <h2> {this.props.data} </h2>
     );
   }
 }
 
-const CountWithSubscription = withSubscription(Count);
+function selectData(store) {
+  return store.getState().tasks.length;
+}
+
+const CountWithSubscription = withSubscription(Count, selectData);
+
 
 export default CountWithSubscription;

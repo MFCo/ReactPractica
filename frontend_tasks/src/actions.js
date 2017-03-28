@@ -1,5 +1,7 @@
 export const ADD_TASK = 'ADD_TASK';
+import store from './store';
+
 
 export function addTask(task) {
-  return { type: ADD_TASK, task }
+  store.dispatch({ type: ADD_TASK, task });
 }

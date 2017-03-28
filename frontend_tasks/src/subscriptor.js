@@ -2,25 +2,25 @@ import React from 'react';
 import store from './store';
 
 
-function withSubscription(WrappedComponent) {
-  var table = [];
+function withSubscription(WrappedComponent, selectData=()=>{return[]}, selectActions=()=>{return[]}) {
+  var selectedData = [];
+  var selectedActions = [];
   return class extends React.Component {
     constructor(props) {
       super(props);
+      selectedActions = selectActions();
     }
 
     componentDidMount() {
       store.subscribe(() => {
-        var newData = store.getState().tasks;
-        table = newData;
-        console.log(table);
+        selectedData = selectData(store);
         this.forceUpdate();
       });
     }
 
 
     render() {
-      return <WrappedComponent data={table} {...this.props} />;
+      return <WrappedComponent data={selectedData} {...selectedActions} {...this.props} />;
     }
   };
 }

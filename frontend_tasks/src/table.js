@@ -1,8 +1,6 @@
-import store from './store';
 import { addTask } from './actions';
 import React, { Component } from 'react';
 import CountWithSubscription from './count';
-import NameForm from './form';
 import withSubscription from './subscriptor';
 
 class TableRow extends React.Component {
@@ -33,7 +31,7 @@ class Table extends React.Component {
 
     xmlhttp.onload = () => {
       var obj = JSON.parse(xmlhttp.response);
-      store.dispatch(addTask(obj));
+      this.props.addTask(obj);
     };
     xmlhttp.send(null);
   }
@@ -55,6 +53,14 @@ class Table extends React.Component {
   }
 }
 
-const TableWithSubscription = withSubscription(Table);
+function selectData(store) {
+  return store.getState().tasks;
+}
+
+function selectActions(){
+  return {addTask : addTask}
+}
+
+const TableWithSubscription = withSubscription(Table, selectData, selectActions);
 
 export default TableWithSubscription;
