@@ -61,6 +61,6 @@ function selectActions(){
   return {addTask : addTask}
 }
 
-const TableWithSubscription = withSubscription(Table, selectData, selectActions);
+const TableWithSubscription = withSubscription(selectData, selectActions)(Table);
 
 export default TableWithSubscription;

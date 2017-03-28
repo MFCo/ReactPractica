@@ -16,7 +16,7 @@ function selectData(store) {
   return store.getState().tasks.length;
 }
 
-const CountWithSubscription = withSubscription(Count, selectData);
+const CountWithSubscription = withSubscription(selectData)(Count);
 
 
 export default CountWithSubscription;
