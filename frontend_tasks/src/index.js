@@ -14,7 +14,7 @@ ReactDOM.render(
     </Route>
     <Route path="/login" component={LoginForm} />
     <Route path="/signup" component={SignupForm} />
-  </Router>,
+  </Router >,
   document.getElementById("root")
 
 );

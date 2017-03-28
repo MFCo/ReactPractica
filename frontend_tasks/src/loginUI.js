@@ -1,3 +1,5 @@
+import { Link } from 'react-router'
+
 import React, { Component } from 'react';
 
 class LoginForm extends React.Component {
@@ -46,15 +48,20 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    User:
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        User:
                     <input type="text" value={this.state.user} onChange={this.handleChangeUser} />
-                    Pass:
+                        Pass:
                     <input type="text" value={this.state.pass} onChange={this.handleChangePass} />
-                </label>
-                <input type="submit" value="Logueame" />
-            </form>
+                    </label>
+                    <input type="submit" value="Logueame" />
+                </form>
+                <span>
+                    <Link to="/signup"> Click to signup </Link>
+            </span>
+            </div >
         );
     }
 }
