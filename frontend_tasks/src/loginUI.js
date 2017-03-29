@@ -1,6 +1,8 @@
 import { Link } from 'react-router'
-
+import { connect } from 'react-redux';
+import { logged } from './actions';
 import React, { Component } from 'react';
+import {history} from './history'
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -32,8 +34,11 @@ class LoginForm extends React.Component {
             var existe = false;
             obj.forEach((element) => {
                 if (element.user == this.state.user)
-                    if (element.pass == this.state.pass)
-                        alert("LOGUEADISSSIMO")
+                    if (element.pass == this.state.pass) {
+                        alert("LOGUEADISSSIMO");
+                        existe = true;
+                        this.props.logged();
+                    }
                     else
                         alert("MALA PASS")
             })
@@ -44,7 +49,9 @@ class LoginForm extends React.Component {
             alert("ERROR");
         }
         event.preventDefault();
-    }
+
+    };
+
 
     render() {
         return (
@@ -60,10 +67,20 @@ class LoginForm extends React.Component {
                 </form>
                 <span>
                     <Link to="/signup"> Click to signup </Link>
-            </span>
+                </span>
             </div >
         );
     }
 }
 
-export default LoginForm;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logged: () => {
+      dispatch(logged())
+    }
+  };
+}
+
+
+const LoginFormConnected =  connect(undefined,mapDispatchToProps)(LoginForm)
+export default LoginFormConnected;

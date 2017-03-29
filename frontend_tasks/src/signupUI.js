@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class SignupForm extends React.Component {
     constructor(props) {

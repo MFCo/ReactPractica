@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import withSubscription from './subscriptor';
+import { connect } from 'react-redux';
+
 
 class Count extends React.Component {
   constructor(props) {
@@ -12,11 +13,13 @@ class Count extends React.Component {
   }
 }
 
-function selectData(store) {
-  return store.getState().tasks.length;
+const mapStateToProps = (store) => {
+  return {
+    data: store.tasks.length
+  }
 }
 
-const CountWithSubscription = withSubscription(selectData)(Count);
+const CountWithSubscription = connect(mapStateToProps)(Count);
 
 
 export default CountWithSubscription;

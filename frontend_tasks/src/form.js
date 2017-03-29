@@ -1,6 +1,6 @@
 import { addTask } from './actions';
-import withSubscription from './subscriptor';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 
 class NameForm extends React.Component {
@@ -48,10 +48,14 @@ class NameForm extends React.Component {
   }
 }
 
-function formActions() {
-  return { addTask: addTask };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTask: (t) => {
+      dispatch(addTask(t))
+    }
+  };
 }
 
-const NameFormConnected = withSubscription(undefined, formActions)(NameForm);
+const NameFormConnected = connect(undefined, mapDispatchToProps)(NameForm);
 
 export default NameFormConnected;

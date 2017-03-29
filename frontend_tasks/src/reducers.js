@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { ADD_TASK } from './actions';
+import { ADD_TASK, LOGGED } from './actions';
 
 function tasks(state = [], action) {
     switch (action.type) {
@@ -11,6 +11,16 @@ function tasks(state = [], action) {
     }
 }
 
-const taskApp = combineReducers({ tasks })
+function logged(state = false, action) {
+    switch (action.type) {
+        case LOGGED: {
+            return true;
+        }
+        default:
+            return false;
+    }
+}
+
+const taskApp = combineReducers({ tasks, logged })
 
 export default taskApp;

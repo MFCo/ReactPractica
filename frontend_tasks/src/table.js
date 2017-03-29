@@ -1,7 +1,8 @@
 import { addTask } from './actions';
 import React, { Component } from 'react';
 import CountWithSubscription from './count';
-import withSubscription from './subscriptor';
+import { connect } from 'react-redux';
+
 
 class TableRow extends React.Component {
   render() {
@@ -53,14 +54,20 @@ class Table extends React.Component {
   }
 }
 
-function selectData(store) {
-  return store.getState().tasks;
+const mapStateToProps = (store) => {
+  return {
+    data: store.tasks
+  }
 }
 
-function selectActions(){
-  return {addTask : addTask}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTask: (t) => {
+      dispatch(addTask(t))
+    }
+  };
 }
 
-const TableWithSubscription = withSubscription(selectData, selectActions)(Table);
+const TableWithSubscription = connect(mapStateToProps, mapDispatchToProps)(Table);
 
 export default TableWithSubscription;
