@@ -1,1 +1,5 @@
 -Migrar aplicación a React-Redux
+-Login manejado por forntend
+-Sin login no podes ver nada (Router)
+-Login mientras no recargues
+-Investigar cookies

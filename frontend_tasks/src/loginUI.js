@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import { logged } from './actions';
 import React, { Component } from 'react';
-import {history} from './history'
+import { browserHistory } from 'react-router';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -38,6 +38,7 @@ class LoginForm extends React.Component {
                         alert("LOGUEADISSSIMO");
                         existe = true;
                         this.props.logged();
+                        browserHistory.push('/newtask');
                     }
                     else
                         alert("MALA PASS")
