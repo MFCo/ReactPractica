@@ -1,0 +1,2 @@
+-Agregar manejo de cookies al backend
+-Pasar el login a un POST

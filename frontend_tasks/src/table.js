@@ -29,11 +29,14 @@ class Table extends React.Component {
   componentDidMount() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", 'http://localhost:5000/tasks', true);
-
+    xmlhttp.withCredentials = true;
     xmlhttp.onload = () => {
       var obj = JSON.parse(xmlhttp.response);
       this.props.addTask(obj);
     };
+    xmlhttp.onerror = function() {
+      console.log(arguments);
+    }
     xmlhttp.send(null);
   }
 

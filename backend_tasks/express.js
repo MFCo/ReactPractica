@@ -2,6 +2,10 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser')
+const uuidV4 = require('uuid/v4');
+var cors = require('cors')
+
 
 //Ready to parse JSON in Post
 app.use(bodyParser.json());
@@ -9,6 +13,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.use(cors({credentials : true}));
 //Connect db
 mongoose.connect('mongodb://localhost');
 
@@ -35,8 +40,11 @@ var userSchema = mongoose.Schema({
 
 var User = mongoose.model('User', userSchema);
 
+//Cookies
 
-//Posting tasks
+app.use(cookieParser());
+
+//Posting tasks 
 app.post('/tasks', function (req, res) {
   var t = new Task({
     name: req.body.name,
@@ -62,12 +70,40 @@ app.post('/users', function (req, res) {
   });
 });
 
+//Posting login
+app.post('/login', function (req, res) {
+  var query = User.where({ user: req.body.user });
+  query.findOne(function (err, user) {
+    if (err) { return res.status(500).send(err); }
+    if (user) {
+      if (user.pass == req.body.pass) {
+        res.cookie('token', uuidV4(),{domain: 'localhost'});
+        res.status(201).send({
+          status: true
+        });
+      }
+      else {
+        res.status(400).send({
+          status: false
+        });
+      }
+    }
+    else {
+      res.status(400).send({
+        status: false
+      });
+    }
+  });
+
+
+
+})
+
 
 //Modify a task
 
 app.put('/tasks', function (req, res) {
   Task.findById(req.body._id, function (err, p) {
-    console.log(p);
     if (!p)
       return res.status(500).send(err);
     else {
@@ -91,14 +127,6 @@ app.get('/tasks', function (req, res) {
   Task.find(function (err, tasks) {
     if (err) return res.status(500).send(err);
     res.send(tasks);
-  })
-})
-
-//Getting all users
-app.get('/users', function (req, res) {
-  User.find(function (err, users) {
-    if (err) return res.status(500).send(err);
-    res.send(users);
   })
 })
 

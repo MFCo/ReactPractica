@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { logged } from './actions';
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
+import cookie from 'react-cookie';
+
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -26,27 +28,24 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(event) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", 'http://localhost:5000/users', true);
-
-        xmlhttp.onload = () => {
-            var obj = JSON.parse(xmlhttp.response);
-            var existe = false;
-            obj.forEach((element) => {
-                if (element.user == this.state.user)
-                    if (element.pass == this.state.pass) {
-                        alert("LOGUEADISSSIMO");
-                        existe = true;
-                        this.props.logged();
-                        browserHistory.push('/newtask');
-                    }
-                    else
-                        alert("MALA PASS")
-            })
-            if (!existe) alert("NO EXISTE");
-        };
-        xmlhttp.send(null);
-        xmlhttp.onerror = function () {
+        var req = new XMLHttpRequest();
+        req.open("POST", 'http://localhost:5000/login', true);
+        //req.withCredentials = true;
+        req.setRequestHeader("Content-Type", "application/json");
+        req.send(JSON.stringify({
+            user: this.state.user,
+            pass: this.state.pass
+        }));
+        req.onload = () => {
+            if (req.status == 201) {
+                this.props.logged();
+                browserHistory.push('/newtask');
+            }
+            if (req.status == 400 || req.status == 500) {
+                alert("NO EXISTE COMBINACION");
+            }
+        }
+        req.onerror = function () {
             alert("ERROR");
         }
         event.preventDefault();
@@ -75,13 +74,13 @@ class LoginForm extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    logged: () => {
-      dispatch(logged())
-    }
-  };
+    return {
+        logged: () => {
+            dispatch(logged())
+        }
+    };
 }
 
 
-const LoginFormConnected =  connect(undefined,mapDispatchToProps)(LoginForm)
+const LoginFormConnected = connect(undefined, mapDispatchToProps)(LoginForm)
 export default LoginFormConnected;
