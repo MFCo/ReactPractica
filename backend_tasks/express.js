@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(cors({credentials : true}));
+app.use(cors({ origin: ["http://localhost:3000"], credentials: true }));
 //Connect db
 mongoose.connect('mongodb://localhost');
 
@@ -77,7 +77,7 @@ app.post('/login', function (req, res) {
     if (err) { return res.status(500).send(err); }
     if (user) {
       if (user.pass == req.body.pass) {
-        res.cookie('token', uuidV4(),{domain: 'localhost'});
+        res.cookie('token', uuidV4(), { domain: 'localhost' });
         res.status(201).send({
           status: true
         });

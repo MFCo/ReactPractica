@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
     handleSubmit(event) {
         var req = new XMLHttpRequest();
         req.open("POST", 'http://localhost:5000/login', true);
-        //req.withCredentials = true;
+        req.withCredentials = true;
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify({
             user: this.state.user,
