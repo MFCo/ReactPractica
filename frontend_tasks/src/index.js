@@ -17,8 +17,8 @@ function requireAuth(nextState, replaceState) {
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route exact path="/" component={TableWithSubscription} onEnter={requireAuth}>
-        <Route path="/newtask" component={NameFormConnected} onEnter={requireAuth} />
+      <Route exact path="/" component={TableWithSubscription} >
+        <Route path="/newtask" component={NameFormConnected} />
       </Route>
       <Route path="/login" component={LoginForm} />
       <Route path="/signup" component={SignupForm} />

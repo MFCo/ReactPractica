@@ -2,6 +2,8 @@ import { addTask } from './actions';
 import React, { Component } from 'react';
 import CountWithSubscription from './count';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import { request } from './request';
 
 
 class TableRow extends React.Component {
@@ -27,17 +29,12 @@ class Table extends React.Component {
   }
 
   componentDidMount() {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", 'http://localhost:5000/tasks', true);
-    xmlhttp.withCredentials = true;
-    xmlhttp.onload = () => {
-      var obj = JSON.parse(xmlhttp.response);
-      this.props.addTask(obj);
-    };
-    xmlhttp.onerror = function() {
-      console.log(arguments);
-    }
-    xmlhttp.send(null);
+    request("GET", 'http://localhost:5000/tasks',
+      (xmlhttp) => {
+        var obj = JSON.parse(xmlhttp.response);
+        this.props.addTask(obj);
+      });
+
   }
 
   renderChildren(props) {

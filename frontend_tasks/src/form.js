@@ -1,6 +1,7 @@
 import { addTask } from './actions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { request } from './request';
 
 
 class NameForm extends React.Component {
@@ -19,19 +20,13 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    var req = new XMLHttpRequest();
-    req.open("POST", 'http://localhost:5000/tasks', true);
-    req.setRequestHeader("Content-Type", "application/json");
-    req.send(this.state.value);
-    req.onload = () => {
+    request("POST", 'http://localhost:5000/tasks', (req) => {
       if (req.status == 201) {
         this.props.addTask(JSON.parse(this.state.value));
         alert(req.status);
       }
-    }
-    req.onerror = function () {
-      alert("ERROR");
-    }
+    },
+      this.state.value);
     event.preventDefault();
   }
 

@@ -14,7 +14,6 @@ function tasks(state = [], action) {
 function logged(state = false, action) {
     switch (action.type) {
         case LOGGED: {
-            console.log("asdasd");
             return true;
         }
         default:

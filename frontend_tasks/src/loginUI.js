@@ -2,8 +2,8 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import { logged } from './actions';
 import React, { Component } from 'react';
+import { request } from './request';
 import { browserHistory } from 'react-router';
-import cookie from 'react-cookie';
 
 
 class LoginForm extends React.Component {
@@ -28,15 +28,7 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(event) {
-        var req = new XMLHttpRequest();
-        req.open("POST", 'http://localhost:5000/login', true);
-        req.withCredentials = true;
-        req.setRequestHeader("Content-Type", "application/json");
-        req.send(JSON.stringify({
-            user: this.state.user,
-            pass: this.state.pass
-        }));
-        req.onload = () => {
+        request("POST", 'http://localhost:5000/login', (req) => {
             if (req.status == 201) {
                 this.props.logged();
                 browserHistory.push('/newtask');
@@ -44,10 +36,11 @@ class LoginForm extends React.Component {
             if (req.status == 400 || req.status == 500) {
                 alert("NO EXISTE COMBINACION");
             }
-        }
-        req.onerror = function () {
-            alert("ERROR");
-        }
+        },
+            JSON.stringify({
+                user: this.state.user,
+                pass: this.state.pass
+            }))
         event.preventDefault();
 
     };

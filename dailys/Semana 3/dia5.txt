@@ -1,0 +1,3 @@
+-Fix manejo de cookies desde backend
+-Login redirect desde backend
+-Request factor comun entre componentes
