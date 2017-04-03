@@ -1,18 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { browserHistory, Router, Route, IndexRoute, withRouter } from 'react-router'
+import { browserHistory, Router, Route } from 'react-router'
 import TableWithSubscription from './table';
 import NameFormConnected from './form';
 import LoginForm from './loginUI';
 import SignupForm from './signupUI';
 import { Provider } from 'react-redux';
 import store from './store';
-
-function requireAuth(nextState, replaceState) {
-  if (!store.getState().logged) {
-    replaceState('/login');
-  }
-}
 
 ReactDOM.render(
   <Provider store={store}>

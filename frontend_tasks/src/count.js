@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 
 class Count extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  
   render() {
     return (
       <h2> {this.props.data} </h2>

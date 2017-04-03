@@ -78,8 +78,6 @@ app.post('/login', function (req, res) {
 
 app.use(function (req, res, next) {
   var exist = false;
-  console.log(req.cookies);
-  console.log(cookies);
   cookies.forEach(function (element) {
     if (element == req.cookies.token) {
       exist = true;
@@ -87,11 +85,9 @@ app.use(function (req, res, next) {
     }
   });
   if (exist) {
-    console.log("existe");
     next();
   }
   else {
-    console.log("NO EXISTE");
     res.status(401).send({
       location: '/login'
     });
@@ -151,6 +147,7 @@ app.put('/tasks', function (req, res) {
 
 //Getting all tasks
 app.get('/tasks', function (req, res) {
+  console.log("asdasd");
   Task.find(function (err, tasks) {
     if (err) return res.status(500).send(err);
     res.send(tasks);

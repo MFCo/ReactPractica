@@ -1,10 +1,11 @@
 import { addTask } from './actions';
-import React, { Component } from 'react';
+import React from 'react';
 import CountWithSubscription from './count';
 import { connect } from 'react-redux';
+// import { request } from './request';
+import SignOutButton from './signOut'
+import request from 'superagent';
 import { browserHistory } from 'react-router';
-import { request } from './request';
-
 
 class TableRow extends React.Component {
   render() {
@@ -24,17 +25,21 @@ class TableRow extends React.Component {
 }
 
 class Table extends React.Component {
+
   constructor(props) {
     super(props);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   componentDidMount() {
-    request("GET", 'http://localhost:5000/tasks',
-      (xmlhttp) => {
-        var obj = JSON.parse(xmlhttp.response);
+    request
+      .get('http://localhost:5000/tasks')
+      .withCredentials()
+      .end((err, res) => {
+        if (err) browserHistory.push(JSON.parse(res.text).location);
+        var obj = JSON.parse(res.text);
         this.props.addTask(obj);
       });
-
   }
 
   renderChildren(props) {
@@ -49,6 +54,7 @@ class Table extends React.Component {
         <TableRow data={this.props.data} />
         {this.renderChildren(this.props)}
         <CountWithSubscription />
+        <SignOutButton />
       </table>
     );
   }

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -31,7 +30,7 @@ class SignupForm extends React.Component {
             pass: this.state.pass
         }));
         req.onload = () => {
-            if (req.status == 201) {
+            if (req.status === 201) {
                 alert(req.status);
             }
         }

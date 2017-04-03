@@ -1,8 +1,8 @@
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import { logged } from './actions';
-import React, { Component } from 'react';
-import { request } from './request';
+import React from 'react';
+import request from 'superagent';
 import { browserHistory } from 'react-router';
 
 
@@ -28,21 +28,20 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(event) {
-        request("POST", 'http://localhost:5000/login', (req) => {
-            if (req.status == 201) {
-                this.props.logged();
-                browserHistory.push('/newtask');
-            }
-            if (req.status == 400 || req.status == 500) {
-                alert("NO EXISTE COMBINACION");
-            }
-        },
-            JSON.stringify({
+        request
+            .post('http://localhost:5000/login')
+            .withCredentials()
+            .send({
                 user: this.state.user,
                 pass: this.state.pass
-            }))
-        event.preventDefault();
+            })
+            .end((err, res) => {
+                if (err) browserHistory.push(JSON.parse(res.text).location);
+                this.props.logged();
+                browserHistory.push('/newtask');
 
+            });
+        event.preventDefault();
     };
 
 

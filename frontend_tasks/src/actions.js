@@ -1,6 +1,12 @@
-import store from './store';
 export const ADD_TASK = 'ADD_TASK';
 export const LOGGED = 'LOGGED';
+export const LOGOUT = 'LOGOUT';
+
+export const logOut = () => {
+  return {
+    type: LOGOUT
+  }
+}
 
 export const addTask = (task) => {
   return {

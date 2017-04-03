@@ -1,5 +1,7 @@
 import { browserHistory } from 'react-router';
 
+//DEPRECATED SUPERAGENT INSTEAD
+
 export function request(type, link, onloadCustom = () =>{return}, objToPost) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open(type, link, true);
@@ -8,7 +10,7 @@ export function request(type, link, onloadCustom = () =>{return}, objToPost) {
     xmlhttp.send(objToPost);
 
     xmlhttp.onload = () => {
-        if (xmlhttp.status == 401) {
+        if (xmlhttp.status === 401) {
             browserHistory.push(JSON.parse(xmlhttp.response).location);
         }
         else {

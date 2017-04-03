@@ -1,8 +1,8 @@
 import { addTask } from './actions';
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { request } from './request';
-
+import request from 'superagent';
+import { browserHistory } from 'react-router';
 
 class NameForm extends React.Component {
   constructor(props) {
@@ -20,13 +20,15 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    request("POST", 'http://localhost:5000/tasks', (req) => {
-      if (req.status == 201) {
+    request
+      .post('http://localhost:5000/tasks')
+      .withCredentials()
+      .send(this.state.value)
+      .end((err, res) => {
+        if (err) browserHistory.push(JSON.parse(res.text).location);
         this.props.addTask(JSON.parse(this.state.value));
-        alert(req.status);
       }
-    },
-      this.state.value);
+    });
     event.preventDefault();
   }
 
