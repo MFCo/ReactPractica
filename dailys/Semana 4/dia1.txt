@@ -1,0 +1,4 @@
+-Migración a SuperAgent para conectar backend
+-Funcionalidad de logout
+-Comenzar a leer css (http://www.cssbasics.com/)
+-Aplicar css básico a la página

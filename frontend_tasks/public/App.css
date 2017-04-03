@@ -1,0 +1,22 @@
+body {
+  background: #eee;
+  font-family: "Trebuchet MS", Verdana, Arial, serif;
+}
+
+div {
+  font-size: x-small;
+}
+
+table {
+  border: 5px solid #900;
+  background: #fff;
+}
+
+tr {
+  border: 5px solid #090;
+}
+
+td {
+  background: #ccc;
+  padding: 5px 0;
+}
