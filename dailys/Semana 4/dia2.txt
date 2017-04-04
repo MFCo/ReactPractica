@@ -1,0 +1,5 @@
+-CSS Box Model
+-Specificity
+-BEM notation
+-Floats
+-Seleccionar un modelo de Media Queries para implementar
