@@ -1,0 +1,2 @@
+-Crear modelo de columnas simple hasta 6 columnas (html y css básico)
+-Comenzar a trabajar en recrear ThinkwithGoogle
