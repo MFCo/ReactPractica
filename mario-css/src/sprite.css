@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-repeat: no-repeat;
+}
+
+.sprite {
+  background: url("../public/sprite-mario.gif");
+  width: 16px;
+  height: 30px;
+}
+
+.sprite_inline {
+  float: left;
+}
+
+.sprite_stand {
+  background-position: top -60px left -6px;
+}
+
+.sprite_run {
+  background-position: top -60px left -34px;
+}
+
+.sprite_walk {
+  background-position: top -60px left -62px;
+}
+
+.sprite_jump {
+  background-position: top -60px left -95px;
+}
+
+.sprite_fall {
+  background-position: top -60px left -122px;
+}
+
+.sprite_front {
+  background-position: top -60px left -150px;
+}
+
+.sprite_back {
+  background-position: top -60px left -172px;
+}
+
+.sprite_down {
+  background-position: top -60px left -195px;
+}
