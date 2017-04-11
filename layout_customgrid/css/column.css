@@ -1,8 +1,19 @@
 body {
+    display: block;   
+    width : 95%;
+    margin : auto auto;
     background-color: #ddddd4;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'RobotoDraft','Helvetica Neue',Helvetica,Arial;
+}
+
+div {
+    margin:0;padding:0;
 }
 
 p {
+  margin:0;padding:0;
   border: 1px solid #666;
   overflow: hidden;
   text-align: center;
@@ -17,6 +28,9 @@ p {
   height: 0;
 }
 
+.gridr {
+    float: right;
+}
 .grid {
   float: left;
 }
@@ -27,8 +41,7 @@ p {
 }
 
 header {
-    width : 75%;
-    margin : auto auto;
+    display: block;
     background-color: #ffffff;
 }
 
@@ -52,56 +65,69 @@ header {
     width: 12.5%;
 }
 
-.clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
+.grid_7 {
+    width : 66.66%;
 }
 
 .font{
-    color: #ffffff;
     font-family: 'RobotoDraft','Helvetica Neue',Helvetica,Arial;
-    font-size: 100%;
-    font-weight: bold;
-    letter-spacing: .005em;
     line-height: 1.3;
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: .005em;
+    color: #ffffff;
 }
 
-.c1 {
+.font_c2{
+    color: gray;
+}
+
+.text-box_c1 {
     background-color: #1976D2; 
 }
 
-.c2{
+.text-box_c2{
     background-color: #673AB7;
 }
 
-.c3 {
+.text-box_c3 {
     background-color: #e52d27;
 }
 
-.c4{
+.text-box_c4{
     background-color: #f9f9f7;
 }
 
-.big {
-    min-height: 50%;    
+.text-box_big {
+    bottom: 5%;
+    left: 5%;
+    right: 0;
+    height: 45%;
+    width: 30%;
 }
 
-.small {
-    min-height: 5%;
+.text-box_small {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 35%;
 }
 
 .text-box{
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+
+}
+
+.text-box_container {
+    position: relative;
+}
+
+.img_block {
+    display: block;
 }
 
 .container {
     display: inline-block;
     position: relative;
+    margin : auto auto;
 }

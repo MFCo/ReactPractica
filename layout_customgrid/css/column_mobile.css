@@ -1,0 +1,31 @@
+    .text-box_big {
+        bottom: 5%;
+        left: 5%;
+        right: 0;
+        height: 30%;
+        width: 90%;
+    }
+
+    .body {
+        width: 100%;
+    }
+    .grid_3_t {
+        width: 100%;
+    }
+
+    .grid_7{
+        width: 100%;
+    }
+
+    .grid_2_t {
+        width: 100%;
+    }
+
+    .grid_2_t .grid_1 {
+        width: 30%;
+    }
+
+    .text-box_small{
+        left: 30%;
+        min-height: 100%;
+    }
