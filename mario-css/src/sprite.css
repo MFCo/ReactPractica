@@ -7,7 +7,7 @@ body {
 
 .sprite {
   background: url("../public/sprite-mario.gif");
-  width: 16px;
+  width: 18px;
   height: 30px;
 }
 
@@ -16,33 +16,73 @@ body {
 }
 
 .sprite_stand {
-  background-position: top -60px left -6px;
+  background-position: top -60px left -4px;
 }
 
 .sprite_run {
-  background-position: top -60px left -34px;
+  background-position: top -60px left -32px;
 }
 
 .sprite_walk {
-  background-position: top -60px left -62px;
+  background-position: top -60px left -60px;
 }
 
 .sprite_jump {
-  background-position: top -60px left -95px;
+  background-position: top -60px left -93px;
 }
 
 .sprite_fall {
-  background-position: top -60px left -122px;
+  background-position: top -60px left -120px;
 }
 
 .sprite_front {
-  background-position: top -60px left -150px;
+  background-position: top -60px left -148px;
 }
 
 .sprite_back {
-  background-position: top -60px left -172px;
+  background-position: top -60px left -170px;
 }
 
 .sprite_down {
-  background-position: top -60px left -195px;
+  background-position: top -60px left -193px;
+}
+
+.sprite_start-run {
+  background-position: top -60px left -220px;
+}
+
+.sprite_stand-arms {
+  background-position: top -60px left -242px;
+}
+
+.sprite_run-arms {
+  background-position: top -60px left -269px;
+}
+
+.sprite_walk-arms {
+  background-position: top -60px left -294px;
+}
+
+.sprite_fly-arms {
+  background-position: top -60px left -319px;
+}
+
+.sprite_kick {
+  background-position: top -60px left -341px;
+}
+
+.sprite_sit {
+  background-position: top -60px left -365px;
+}
+
+.sprite_small {
+  background-position: top -60px left -390px;
+}
+
+.sprite_look-up {
+  background-position: top -60px left -410px;
+}
+
+.sprite_victory {
+  background-position: top -60px left -431px;
 }

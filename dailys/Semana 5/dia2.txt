@@ -1,1 +1,2 @@
 -Aplicar media queries para mobile y tablet en Thinkwithgoogle
+-Recortar sprites con background position para animacion mario

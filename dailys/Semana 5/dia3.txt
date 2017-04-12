@@ -1,0 +1,4 @@
+-Continuar con sprites mario
+-requestanimationframe()
+-debounce()
+-slider para arreglar velocidad
