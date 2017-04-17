@@ -1,6 +1,5 @@
 import React from 'react';
 import './sprite.css';
-import Mario from './mario';
 import { connect } from 'react-redux';
 var debounce = require('debounce');
 
@@ -19,8 +18,8 @@ class Background extends React.Component {
     step() {
         if (position === 'right') count++;
         if (position === 'left') count--;
-        if (count === -1) count=10;
-        count = count % 11;
+        if (count === -1) count = 10;
+        count %= 11;
         this.forceUpdate();
         if (active)
             an_ID = window.requestAnimationFrame(debounce(this.step, this.props.data));

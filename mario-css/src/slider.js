@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import 'rc-slider/assets/index.css';
 import { setTime } from './actions';
 
-const wrapperStyle = { width: 400, margin: 50 };
-
 const SliderMario = React.createClass({
     onSliderChange: function (value) {
         this.props.setTime(value);
