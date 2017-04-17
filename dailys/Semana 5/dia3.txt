@@ -2,3 +2,4 @@
 -requestanimationframe()
 -debounce()
 -slider para arreglar velocidad
+-parallax

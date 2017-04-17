@@ -2,7 +2,89 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-repeat: no-repeat;
+}
+
+.center {
+  position: relative;
+  bottom: -263px;
+  left: 275px;
+}
+
+.background {
+  width: 600px;
+  height: 337px;
+  background-repeat: repeat-x;
+}
+
+.background_forest {
+  background: url("../public/background-forest.jpg");
+}
+
+.background_0 {
+  background-position-x: 0px;
+}
+
+.left {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+.right {
+  -moz-transform: scaleX(1);
+  -o-transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+.background_1 {
+  background-position-x: -50px;
+}
+
+.background_2 {
+  background-position-x: -100px;
+}
+
+.background_3 {
+  background-position-x: -150px;
+}
+
+.background_4 {
+  background-position-x: -200px;
+}
+
+.background_4 {
+  background-position-x: -250px;
+}
+
+.background_5 {
+  background-position-x: -300px;
+}
+
+.background_6 {
+  background-position-x: -350px;
+}
+
+
+.background_7 {
+  background-position-x: -400px;
+}
+
+.background_8 {
+  background-position-x: -450px;
+}
+
+.background_9 {
+  background-position-x: -500px;
+}
+
+.background_10 {
+  background-position-x: -550px;
 }
 
 .sprite {

@@ -1,30 +1,26 @@
 import React from 'react';
 import './sprite.css';
+import Mario from './mario';
 import { connect } from 'react-redux';
 var debounce = require('debounce');
 
-
-var action = 'stand';
 var count = 0;
 var an_ID;
 var fired = false;
 var active = false;
 var position = '';
 
-class Mario extends React.Component {
+class Background extends React.Component {
     constructor(props) {
         super(props);
         this.step = this.step.bind(this);
     }
 
     step() {
-        switch (count) {
-            case 0: action = 'stand'; break;
-            case 1: action = 'run'; break;
-            case 2: action = 'walk'; break;
-            default: action = 'stand'; break;
-        }
-        count = (count + 1) % 3;
+        if (position === 'right') count++;
+        if (position === 'left') count--;
+        if (count === -1) count=10;
+        count = count % 11;
         this.forceUpdate();
         if (active)
             an_ID = window.requestAnimationFrame(debounce(this.step, this.props.data));
@@ -48,7 +44,6 @@ class Mario extends React.Component {
     handleKeyUp = (event) => {
         active = false;
         window.cancelAnimationFrame(an_ID);
-        action = 'stand';
         this.forceUpdate();
         fired = false;
     }
@@ -57,10 +52,13 @@ class Mario extends React.Component {
         window.addEventListener("keydown", this.handleKeyDown);
         window.addEventListener("keyup", this.handleKeyUp);
     }
-
     render() {
         return (
-            <div className={'sprite sprite_' + action + ' ' + position}> </div>
+            <div className={'background  background_forest background_' + count}>
+                <div className={'center'} >
+                    {this.props.children}
+                </div>
+            </div>
         );
     }
 }
@@ -71,7 +69,7 @@ const mapStateToProps = (store) => {
     }
 }
 
-const MarioConnected = connect(mapStateToProps)(Mario);
+const BackgroundConnected = connect(mapStateToProps)(Background);
 
 
-export default MarioConnected;
+export default BackgroundConnected;

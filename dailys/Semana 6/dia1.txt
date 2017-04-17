@@ -1,0 +1,2 @@
+-Agegado fondo con Parallax
+-Bindeo de keys para mover solo cuando presionas
