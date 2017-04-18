@@ -1,2 +1,4 @@
 -Agegado fondo con Parallax
--Bindeo de keys para mover solo cuando presionas
+-Bindeo de keys para mover solo cuando presionas (Mario)
+-Recorrer fondo
+-Agregar sonidos

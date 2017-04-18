@@ -1,0 +1,21 @@
+.sidebar {
+  width: var(--sidebar-width);
+  transform: translateX(calc(var(--sidebar-width) * -1));
+  background: linear-gradient(to bottom right, Tomato, Wheat);
+  background-size: 400% 400%;
+  background-position: 90% 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  opacity: .5;
+  transition: transform .6s, background-position 1s .6s;
+}
+
+.input-toggler:checked ~ .sidebar {
+  opacity: .9;
+  transform: translateX(0);
+  background-position: 0 0;
+}
