@@ -1,0 +1,2 @@
+-Generar el html en server side
+-Next.js
