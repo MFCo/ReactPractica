@@ -14,36 +14,12 @@ var _link2 = _interopRequireDefault(_link);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _jsxFileName = "C:\\Users\\Marcio\\Documents\\React\\Tutorialreactapp\\learnnextjs-demo\\components\\Header.js";
-
-
 var linkStyle = {
   marginRight: 15
 };
 
 var Header = function Header() {
-  return _react2.default.createElement("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    }
-  }, _react2.default.createElement(_link2.default, { href: "/", __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9
-    }
-  }, _react2.default.createElement("a", { style: linkStyle, __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    }
-  }, "Home")), _react2.default.createElement(_link2.default, { href: "/about", __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    }
-  }, _react2.default.createElement("a", { style: linkStyle, __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    }
-  }, "About")));
+  return _react2.default.createElement("div", null, _react2.default.createElement(_link2.default, { href: "/" }, _react2.default.createElement("a", { style: linkStyle }, "Home")), _react2.default.createElement(_link2.default, { href: "/about" }, _react2.default.createElement("a", { style: linkStyle }, "About")));
 };
 
 exports.default = Header;

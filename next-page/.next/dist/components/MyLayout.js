@@ -14,9 +14,6 @@ var _Header2 = _interopRequireDefault(_Header);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _jsxFileName = 'C:\\Users\\Marcio\\Documents\\React\\Tutorialreactapp\\learnnextjs-demo\\components\\MyLayout.js';
-
-
 var layoutStyle = {
   margin: 20,
   padding: 20,
@@ -24,16 +21,7 @@ var layoutStyle = {
 };
 
 var Layout = function Layout(props) {
-  return _react2.default.createElement('div', { style: layoutStyle, __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    }
-  }, _react2.default.createElement(_Header2.default, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11
-    }
-  }), props.children);
+  return _react2.default.createElement('div', { style: layoutStyle }, _react2.default.createElement(_Header2.default, null), props.children);
 };
 
 exports.default = Layout;
