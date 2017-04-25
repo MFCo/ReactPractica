@@ -1,1 +1,2 @@
 -Redux con next
+-Async react-router V4 (https://medium.com/@Sawtaytoes/async-react-router-v4-components-c18792e6f331)

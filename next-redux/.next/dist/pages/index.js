@@ -40,7 +40,7 @@ var _Page2 = _interopRequireDefault(_Page);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _jsxFileName = 'C:\\Users\\Marcio\\Documents\\React\\Tutorialreactapp\\next-redux\\pages\\other.js?entry';
+var _jsxFileName = 'C:\\Users\\Marcio\\Documents\\React\\Tutorialreactapp\\next-redux\\pages\\index.js?entry';
 
 
 var Counter = function (_React$Component) {
@@ -65,7 +65,7 @@ var Counter = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(_Page2.default, { title: 'Other Page', linkTo: '/', __source: {
+            return _react2.default.createElement(_Page2.default, { title: 'Index Page', linkTo: '/other', __source: {
                     fileName: _jsxFileName,
                     lineNumber: 22
                 }

@@ -1,0 +1,4 @@
+-Continuar leyendo sobre NextJS y como funciona
+-Server HTTP funcionamiento
+-Comienzo de CSS abovethe fold en componente decorando CSS
+-Glamourous, cómo funciona? Ejemplos
