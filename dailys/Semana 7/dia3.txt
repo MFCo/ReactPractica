@@ -1,0 +1,3 @@
+-Leer Babel (https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md)
+-Empezar a crear plugin para extraer CSS
+-Entender funcionamiento Glamourous, y Glam
