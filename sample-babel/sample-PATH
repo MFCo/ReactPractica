@@ -1,8 +1,5 @@
-constructor
-componentDidMount
-marianoStyle
-render
-Pija
+.--Pija{color : red;position : relative;}
+.--Asde{color : blue;backgroundColor : relative;}
 class Pija extends React.Component {
     constructor(props) {
         super(props);
@@ -12,14 +9,32 @@ class Pija extends React.Component {
         console.log("mounted");
     }
 
-    marianoStyle() {
-        color = red;
-        position = relative;
+    render() {
+        return;
+        React.createElement(
+            "div",
+            { className: "--Pija" },
+            " HOLA "
+        );
+    }
+}
+
+class Asde extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        console.log("mounted");
     }
 
     render() {
         return;
-        //<div> HOLA </div>
+        React.createElement(
+            "div",
+            { className: "--Asde" },
+            " HOLA "
+        );
     }
 }
 
