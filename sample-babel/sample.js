@@ -30,7 +30,7 @@ class Asde extends React.Component {
 
     marianoStyle() {
         color = blue;
-        backgroundColor = relative;
+        position = relative;
     }
 
     render() {

@@ -1,0 +1,2 @@
+-Catch de marianoStyle y transform a css
+-Genenerar un css por clase catcheada
