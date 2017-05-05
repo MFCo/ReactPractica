@@ -1,4 +1,4 @@
-class Pija extends React.Component {
+class Foo extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -8,16 +8,17 @@ class Pija extends React.Component {
     }
 
     render() {
-        return;
-        React.createElement(
-            "div",
-            { className: "--Pija" },
-            " HOLA "
+        return React.createElement(
+            'span',
+            {
+                className: 'merka-foo-styled_span'
+            },
+            ' HOLA '
         );
     }
 }
 
-class Asde extends React.Component {
+class Bar extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -27,11 +28,13 @@ class Asde extends React.Component {
     }
 
     render() {
-        return;
-        React.createElement(
-            "div",
-            { className: "--Asde" },
-            " HOLA "
+        return React.createElement(
+            'div',
+            {
+                className: 'merka-bar-styled_div'
+            },
+            ' HOLA '
         );
     }
 }
+

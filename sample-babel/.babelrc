@@ -1,5 +1,11 @@
 {
     "plugins": [
-        "babel-plugin"
+        [
+            "babel-plugin",
+            {
+                "prefix": "merka"
+            }
+        ],
+        "transform-react-jsx"
     ]
 }

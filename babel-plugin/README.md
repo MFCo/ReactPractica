@@ -1,51 +1,71 @@
-# babel-plugin-babel-plugin
+# **babel-plugin-css-generator-react-components**
 
-
-
+Write styles in your React Component, and get the component styled with .css files automatic generated
 ## Example
 
-**In**
+The following input:
+ ```javascript
+ //INPUT.JS
+ class Foo extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-```js
-// input code
-```
+    componentDidMount() {
+        console.log("mounted");
+    }
 
-**Out**
+    componentStyle() {
+        STYLED_DIV = {
+            'color': red,
+            'position': relative,
+            'background-position': center
+        };
+        STYLED_SPAN = {
+            'color': black,
+            'background-color': red
+        };
+    }
 
-```js
-"use strict";
-
-// output code
-```
-
-## Installation
-
-```sh
-$ npm install babel-plugin-babel-plugin
-```
-
-## Usage
-
-### Via `.babelrc` (Recommended)
-
-**.babelrc**
-
-```json
-{
-  "plugins": ["babel-plugin"]
+    render() {
+        return (
+            <STYLED_DIV> HOLA </STYLED_DIV>)
+    }
 }
-```
+ ```
+ 
+ Results in the following output:
+ 
+ ```css
+ /*foo.css*/
+ .foo-styled_div{color : red;position : relative;background-position : center;}
+.foo-styled_span{color : black;background-color : red;}
+ ```
+ 
+ ```css
+ /*root.css*/
+ @import './foo.css';
+ ```
+ 
+ ```javascript
+ //BABEL OUTPUT
+ class Foo extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-### Via CLI
+    componentDidMount() {
+        console.log("mounted");
+    }
 
-```sh
-$ babel --plugins babel-plugin script.js
-```
-
-### Via Node API
-
-```javascript
-require("babel-core").transform("code", {
-  plugins: ["babel-plugin"]
-});
-```
+    render() {
+        return React.createElement(
+            'div',
+            {
+                className: 'foo-styled_div'
+            },
+            ' HOLA '
+        );
+    }
+}
+ ```
