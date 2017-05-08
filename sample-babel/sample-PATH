@@ -1,3 +1,21 @@
+
+
+function Element(props) {
+    return React.createElement(
+        'div',
+        {
+            className: 'merka-element-styled_div sarasa'
+        },
+        React.createElement(
+            'span',
+            {
+                className: 'merka-element-styled_span'
+            },
+            'HOLA'
+        )
+    );
+}
+
 class Foo extends React.Component {
     constructor(props) {
         super(props);
@@ -12,26 +30,6 @@ class Foo extends React.Component {
             'span',
             {
                 className: 'merka-foo-styled_span'
-            },
-            ' HOLA '
-        );
-    }
-}
-
-class Bar extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {
-        console.log("mounted");
-    }
-
-    render() {
-        return React.createElement(
-            'div',
-            {
-                className: 'merka-bar-styled_div'
             },
             ' HOLA '
         );
